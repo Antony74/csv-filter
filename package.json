@@ -1,0 +1,33 @@
+{
+    "name": "csv-filter",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "rimraf dist && rimraf .parcel-cache && parcel src/index.html --public-url /csv-filter/dist"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Antony74/csv-filter.git"
+    },
+    "keywords": ["csv"],
+    "author": "Antony74",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Antony74/csv-filter/issues"
+    },
+    "homepage": "https://github.com/Antony74/csv-filter#readme",
+    "dependencies": {
+        "@fast-csv/parse": "^5.0.5",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1"
+    },
+    "devDependencies": {
+        "parcel": "^2.15.4",
+        "prettier": "^3.6.2",
+        "rimraf": "^6.0.1",
+        "typescript": "^5.9.2"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": true
+    }
+}
