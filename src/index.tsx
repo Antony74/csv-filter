@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { useCsv } from './hooks/useCsv';
-import { Csv } from './components/Csv';
+import { Csv } from './components/csv_';
+import { Filter } from './components/filter';
 
 const root = document.getElementById('root');
 
@@ -15,6 +16,7 @@ const App = () => {
     return (
         <div>
             <input
+                className="pad"
                 aria-label="Load csv file"
                 type="file"
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +28,7 @@ const App = () => {
                     csv.loadFile(file);
                 }}
             ></input>
+            <Filter csv={csv} />
             <Csv csv={csv} />
         </div>
     );
