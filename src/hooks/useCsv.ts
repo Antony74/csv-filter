@@ -17,9 +17,7 @@ export const useCsv = () => {
                         return;
                     }
 
-                    console.log(content);
-
-                    const output = parse(content, {
+                    const output = parse(content.trim(), {
                         optimistic: false,
                     });
 
@@ -33,6 +31,15 @@ export const useCsv = () => {
 
             setHeaders(output[0]);
             output.shift();
+
+            for (let y = 0; y < output.length; ++y) {
+                for (let x = 0; x < output[y].length; ++x) {
+                    if (output[y][x] === undefined) {
+                        output[y][x] = '';
+                    }
+                }
+            }
+
             setContent(output);
         },
         headers,

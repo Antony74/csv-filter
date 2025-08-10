@@ -6,7 +6,7 @@ export const Csv = ({ csv }: { csv: CsvHook }) => {
             <thead>
                 <tr>
                     {csv.headers.map((header, index) => {
-                        return <td key={index}>{header}</td>;
+                        return <th key={index}>{header}</th>;
                     })}
                 </tr>
             </thead>
@@ -14,9 +14,9 @@ export const Csv = ({ csv }: { csv: CsvHook }) => {
                 {csv.content.map((row, index) => {
                     return (
                         <tr key={index}>
-                            {row.map((cell, index) => (
-                                <td key={index}>{cell}</td>
-                            ))}
+                            {row.map((cell, index) => {
+                                return <td key={index}>{cell}</td>;
+                            })}
                         </tr>
                     );
                 })}
