@@ -46,6 +46,14 @@ const App = () => {
                 }}
             ></input>
             <Controls />
+            <a
+                className="github-fork-ribbon right-top"
+                href="https://github.com/Antony74/csv-filter"
+                data-ribbon="Fork me on GitHub"
+                title="Fork me on GitHub"
+            >
+                Fork me on GitHub
+            </a>
         </div>
     );
 };
