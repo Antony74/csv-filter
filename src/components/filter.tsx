@@ -10,12 +10,12 @@ export const Filter = ({ csv }: { csv: CsvHook }) => {
             Filter rows where{' '}
             <select
                 aria-label="Sketch"
-                defaultValue="no filter"
-                // onChange={(event) => {
-                //     setSketch(event.target.value);
-                // }}
+                defaultValue={csv.filter}
+                onChange={(event) => {
+                    csv.setFilter(event.target.value);
+                }}
             >
-                {csv.headers.map((option) => {
+                {['no filter', ...csv.headers].map((option) => {
                     return <option key={option}>{option}</option>;
                 })}
             </select>{' '}

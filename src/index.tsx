@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { useCsv } from './hooks/useCsv';
-import { Csv } from './components/csv_';
+import { Csv } from './components/csv';
 import { Filter } from './components/filter';
 
 const root = document.getElementById('root');

@@ -4,6 +4,9 @@ import { useState } from 'react';
 export const useCsv = () => {
     const [headers, setHeaders] = useState<string[]>([]);
     const [content, setContent] = useState<string[][]>([]);
+    const [filter, setFilter] = useState('no filter');
+
+    const filterIndex = headers.findIndex((header) => header === filter);
 
     return {
         loadFile: async (file: File) => {
@@ -42,8 +45,13 @@ export const useCsv = () => {
 
             setContent(output);
         },
+
         headers,
-        content,
+        content: content.filter(
+            (row) => filterIndex === -1 || !!row[filterIndex],
+        ),
+        filter,
+        setFilter,
     };
 };
 
