@@ -5,11 +5,14 @@ export const useCsv = () => {
     const [headers, setHeaders] = useState<string[]>([]);
     const [content, setContent] = useState<string[][]>([]);
     const [filter, setFilter] = useState('no filter');
+    const [filename, setFilename] = useState('');
 
     const filterIndex = headers.findIndex((header) => header === filter);
 
     return {
         loadFile: async (file: File) => {
+            setFilename(file.name);
+
             const reader = new FileReader();
 
             const output = await new Promise<string[][]>((resolve, reject) => {
@@ -52,6 +55,7 @@ export const useCsv = () => {
         ),
         filter,
         setFilter,
+        filename,
     };
 };
 

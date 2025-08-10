@@ -1,10 +1,6 @@
 import { CsvHook } from '../hooks/useCsv';
 
 export const Filter = ({ csv }: { csv: CsvHook }) => {
-    if (!csv.content.length) {
-        return <></>;
-    }
-
     return (
         <div className="pad">
             Filter rows where{' '}

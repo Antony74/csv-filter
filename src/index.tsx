@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { useCsv } from './hooks/useCsv';
 import { Csv } from './components/csv';
 import { Filter } from './components/filter';
+import { Save } from './components/save';
 
 const root = document.getElementById('root');
 
@@ -13,12 +14,25 @@ if (root === null) {
 const App = () => {
     const csv = useCsv();
 
+    const Controls = () =>
+        csv.content.length ? (
+            <>
+                {' '}
+                <Filter csv={csv} />
+                <Save csv={csv} />
+                <Csv csv={csv} />
+            </>
+        ) : (
+            <></>
+        );
+
     return (
         <div>
             <input
                 className="pad"
                 aria-label="Load csv file"
                 type="file"
+                accept=".csv"
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     const file = (event.target.files ?? [])[0];
                     if (!file) {
@@ -28,8 +42,7 @@ const App = () => {
                     csv.loadFile(file);
                 }}
             ></input>
-            <Filter csv={csv} />
-            <Csv csv={csv} />
+            <Controls />
         </div>
     );
 };
