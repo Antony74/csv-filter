@@ -27,7 +27,14 @@ const App = () => {
         );
 
     return (
-        <div>
+        <div
+            className="app"
+            onDragOver={(event) => event.preventDefault()}
+            onDrop={(event) => {
+                const file = event.dataTransfer.files[0];
+                csv.loadFile(file);
+            }}
+        >
             <input
                 className="pad"
                 aria-label="Load csv file"
@@ -35,10 +42,6 @@ const App = () => {
                 accept=".csv"
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                     const file = (event.target.files ?? [])[0];
-                    if (!file) {
-                        return;
-                    }
-
                     csv.loadFile(file);
                 }}
             ></input>

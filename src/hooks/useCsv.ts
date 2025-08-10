@@ -10,7 +10,11 @@ export const useCsv = () => {
     const filterIndex = headers.findIndex((header) => header === filter);
 
     return {
-        loadFile: async (file: File) => {
+        loadFile: async (file: File | undefined) => {
+            if (file === undefined) {
+                return;
+            }
+
             setFilename(file.name);
 
             const reader = new FileReader();
